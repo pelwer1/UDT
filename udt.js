@@ -2,10 +2,10 @@
 //
 // Produces a tokenmod command to help you see certain edges and abilities in the token name, auras and bubbles
 //
-// !udt   (update default token)
+// !udt   (update token)
 //
 // creates cmd line like this:
-//     !token-mod --set name|'?{Short Token Name|Mook}  [FSAR2]' statusmarkers|5b-Fear bar3_value|W3 statusmarkers|5-Large:2 defaulttoken
+//     !token-mod --set name|'?{Short Token Name|Mook}  [FSAR2]' statusmarkers|5b-Fear bar3_value|W3 statusmarkers|5-Large:2 
 // running this command will prompt you for a new token name and update the default token
 
 //
@@ -14,6 +14,7 @@
 // 05/20/2020 got everything working
 // 05/23/2020 merged in show bio in chat
 // 05/23/2022 minor updates
+// 06/21/2022 Removed defaulttoken from output
 //
 // send token mod command line to chat to update default token for selected token
 // !udt
@@ -135,7 +136,7 @@ on('ready', function() {
                 else {
                   printOut = "!token-mod --set name|'?{Current Token Name|Mook} " + "' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
                 }
-                sendChat('', '/w gm <b>Token Mod Command:</b><br>' + printOut + ' defaulttoken<br>');
+                sendChat('', '/w gm <b>Token Mod Command:</b><br>' + printOut + ' <br>');
                 
             });
        }
