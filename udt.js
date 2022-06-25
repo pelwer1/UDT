@@ -48,7 +48,7 @@ on('ready', function() {
 
 
             var tokenid = msg.selected[0]._id;
-            var tokenName = msg.selected[0].name;
+            var tokenName = getObj("graphic", tokenid).get("name");
             var charid = getObj("graphic", tokenid).get("represents");
             var c = getObj( 'character', charid );
             
