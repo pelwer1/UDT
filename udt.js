@@ -14,7 +14,7 @@
 // 05/20/2020 got everything working
 // 05/23/2020 merged in show bio in chat
 // 05/23/2022 minor updates
-// 06/21/2022 Removed defaulttoken from output
+// 06/21/2022 Removed defaulttoken from output, getting token name putting into output command
 //
 // send token mod command line to chat to update default token for selected token
 // !udt
@@ -48,6 +48,7 @@ on('ready', function() {
 
 
             var tokenid = msg.selected[0]._id;
+            var tokenName = msg.selected[0].name;
             var charid = getObj("graphic", tokenid).get("represents");
             var c = getObj( 'character', charid );
             
@@ -131,10 +132,12 @@ on('ready', function() {
                 // build the token mod command
                 var printOut =  '';
                 if ( frenzy || sweep || arcResist ) {
-                  printOut = "!token-mod --set name|'?{Current Token Name|Mook} " + " [" + frenzy + sweep + arcResist + "]' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
+                  // printOut = "!token-mod --set name|'?{Current Token Name|Mook} " + " [" + frenzy + sweep + arcResist + "]' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
+                  printOut = "!token-mod --set name|'" + tokenName + " [" + frenzy + sweep + arcResist + "]' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
                 }
                 else {
-                  printOut = "!token-mod --set name|'?{Current Token Name|Mook} " + "' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
+                  // printOut = "!token-mod --set name|'?{Current Token Name|Mook} " + "' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
+                  printOut = "!token-mod --set name|'" + tokenName + "' " + aura1 + aura2  + fear  + " bar3_value|W" + wounds.toString() + hardy + " " + large;
                 }
                 sendChat('', '/w gm <b>Token Mod Command:</b><br>' + printOut + ' <br>');
                 
